@@ -31,14 +31,16 @@ class LinkedList {
       if (currentNode.value === value) {
         return index;
       }
+
       currentNode = currentNode.next;
     }
+
     return -1;
   }
 
   elementAt(index) {
     if (index > this.length - 1) {
-      return undefined;
+      return;
     }
 
     let currentNode = this.head;
@@ -48,6 +50,7 @@ class LinkedList {
       count += 1;
       currentNode = currentNode.next;
     }
+
     return currentNode.value;
   }
 
@@ -95,7 +98,7 @@ class LinkedList {
     } else {
       let currentNode = this.head;
 
-      for (let i = 1; i < index; i++) {
+      for (let count = 1; count < index; count++) {
         currentNode = currentNode.next;
       }
 
@@ -138,11 +141,9 @@ class LinkedList {
 
   removeFirst() {
     const currentNode = this.head;
-
     this.head = currentNode.next;
-
-
     this.length -= 1;
+
     return currentNode.value;
   }
 
@@ -161,8 +162,8 @@ class LinkedList {
 
     previousNode.next = null;
     this.tail = previousNode;
-
     this.length -= 1;
+
     return currentNode.value;
   }
 }
