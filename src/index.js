@@ -89,6 +89,9 @@ class LinkedList {
     if (!this.head) {
       this.head = node;
       this.tail = node;
+    } else if (index === 0) {
+      node.next = this.head;
+      this.head = node;
     } else {
       let currentNode = this.head;
 
