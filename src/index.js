@@ -1,3 +1,12 @@
+
+//element is an object with a value and next property
+class Node{
+    constructor(value){
+        this.value = value,
+        this.next = null
+    }
+}
+    
 class LinkedList{
     constructor(){
         this.head = null,
@@ -7,6 +16,11 @@ class LinkedList{
     size(){
         return this.length
     }
+
+    isEmpty(){
+        return this.length === 0;
+    }
+    
     indexOf(value){
         let currentNode = this.head;
         let index = -1;
@@ -21,14 +35,9 @@ class LinkedList{
         }
 }
 
-//element is an object with a value and next property
-class Node{
-    constructor(value){
-        this.value = value,
-        this.next = null
-    }
+
     
-}
+
 
 
 
