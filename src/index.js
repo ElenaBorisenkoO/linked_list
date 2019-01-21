@@ -112,13 +112,22 @@ class LinkedList {
       return null;
     }
 
-    while (currentIndex < index) {
-      currentIndex += 1;
-      previouceNode = currentNode;
-      currentNode = currentNode.next;
+    if (index === 0) {
+      this.head = currentNode.next;
+    } else {
+      while (currentIndex < index) {
+        currentIndex += 1;
+        previouceNode = currentNode;
+        currentNode = currentNode.next;
+      }
+
+      previouceNode.next = currentNode.next;
     }
 
-    previouceNode.next = null;
+    if (currentNode.next === null) {
+      this.tail = previouceNode;
+      previouceNode.next = null;
+    }
 
     this.length -= 1;
     return currentNode.value;
