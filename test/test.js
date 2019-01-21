@@ -97,7 +97,8 @@ describe('Linked list', function() {
 
   describe('removeLast', function() {
     it('should work correct with empty list', function() {
-      assert.doesNotThrow(list.removeLast());
+      list = new LinkedList();
+      assert.strictEqual(list.removeLast(), undefined);
     });
 
     it('should reduce length by 1', function() {
