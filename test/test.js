@@ -121,7 +121,7 @@ describe('Linked list', function() {
   describe('removeAt', function() {
     it('should reduce length by 1', function() {
       const startLength = list.length;
-      list.removeLast();
+      list.removeAt(1);
 
       assert.strictEqual(list.length, startLength - 1);
     });
