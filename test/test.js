@@ -115,7 +115,7 @@ describe('Linked list', function() {
   });
 
   describe('removeLast', function() {
-    it('should work correcr with empty list', function() {
+    it('should work correct with empty list', function() {
       assert.doesNotThrow(list.removeLast());
     });
 
@@ -136,6 +136,14 @@ describe('Linked list', function() {
       list.removeLast();
 
       assert.strictEqual(list.tail.value, 2);
+    });
+
+    it('should return value of removed node', function() {
+      list.addLast(1);
+      list.addLast(2);
+      list.addLast(3);
+
+      assert.strictEqual(list.removeLast(), 3);
     });
   });
 
@@ -169,6 +177,13 @@ describe('Linked list', function() {
       assert.strictEqual(list.elementAt(0).next.value, 3);
     });
 
+    it('should return value of removed node', function() {
+      list.addLast(1);
+      list.addLast(2);
+      list.addLast(3);
+
+      assert.strictEqual(list.removeAt(1), 2);
+    });
   });
 
   describe('removeFirst', function() {
@@ -189,6 +204,14 @@ describe('Linked list', function() {
       list.removeFirst();
 
       assert.strictEqual(list.head.value, 2);
+    });
+
+    it('should return value of removed node', function() {
+      list.addLast(1);
+      list.addLast(2);
+      list.addLast(3);
+
+      assert.strictEqual(list.removeFirst(), 1);
     });
   });
 
