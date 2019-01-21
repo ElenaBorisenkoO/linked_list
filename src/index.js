@@ -20,7 +20,7 @@ class LinkedList{
     isEmpty(){
         return this.length === 0;
     }
-    
+
     indexOf(value){
         let currentNode = this.head;
         let index = -1;
@@ -33,6 +33,16 @@ class LinkedList{
         }
         return -1;
         }
+
+    elementAt(index){
+        let currentNode = this.head;
+        let count = 0;
+        while(count < index){
+            count++;
+            currentNode = currentNode.next;
+        }
+        return currentNode.value;
+    } 
 }
 
 
