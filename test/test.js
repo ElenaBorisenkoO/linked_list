@@ -4,15 +4,20 @@ let list = null;
 
 beforeEach(function() {
   list = new LinkedList();
+  list.addLast(1);
+  list.addLast(2);
+  list.addLast(3);
 });
 
 describe('Linked list', function() {
   describe('constructor', function() {
     it('should create empty list with 0 parameters', function() {
+      list = new LinkedList();
       assert.strictEqual(list.length, 0);
     });
 
-    it('head and tail hould be null with 0 parameters', function() {
+    it('head and tail should be null with 0 parameters', function() {
+      list = new LinkedList();
       assert.strictEqual(list.head, null);
       assert.strictEqual(list.tail, null);
     });
@@ -20,39 +25,27 @@ describe('Linked list', function() {
 
   describe('instance', function() {
     it('first element should has link to second', function() {
-      list.addLast(5);
-      list.addLast(1);
-      list.addLast(6);
-
-      const secondValue = list.head.next.value;
-      assert.strictEqual(secondValue, 1);
+      assert.strictEqual(list.head.next.value, 2);
     });
 
     it('last but one node should has next link to tail', function() {
-      list.addLast(5);
+      list = new LinkedList();
       list.addLast(1);
-      list.addLast(6);
+      list.addLast(2);
 
-      const secondNode = list.head.next;
-      assert.strictEqual(secondNode.next, list.tail);
+      assert.strictEqual(list.head.next, list.tail);
     });
 
     it('last node should has null next link', function() {
-      list.addLast(5);
-      list.addLast(1);
-      list.addLast(6);
-
       assert.strictEqual(list.tail.next, null);
     });
   });
 
   describe('addFirst', function() {
     it('should add element at first position', function() {
-      list.addFirst(1);
-      list.addFirst(2);
-      assert.strictEqual(list.head, 2);
+      assert.strictEqual(list.head.value, 1);
       list.addFirst(3);
-      assert.strictEqual(list.head, 3);
+      assert.strictEqual(list.head.value, 3);
     });
 
     it('should increace length by 1', function() {
@@ -64,11 +57,9 @@ describe('Linked list', function() {
 
   describe('addLast', function() {
     it('should add element at last position', function() {
-      list.addLast(1);
-      list.addLast(2);
-      assert.strictEqual(list.tail, 2);
-      list.addLast(3);
-      assert.strictEqual(list.tail, 3);
+      assert.strictEqual(list.tail.value, 3);
+      list.addLast(4);
+      assert.strictEqual(list.tail.value, 4);
     });
 
     it('should increace length by 1', function() {
@@ -80,8 +71,6 @@ describe('Linked list', function() {
 
   describe('addAt', function() {
     it('should add element at given position', function() {
-      list.addLast(1);
-      list.addLast(2);
       assert.strictEqual(list.elementAt(1), 2);
       list.addAt(1, 3);
       assert.strictEqual(list.elementAt(1), 3);
@@ -94,23 +83,15 @@ describe('Linked list', function() {
     });
 
     it('pevious node should has link to new node', function() {
-      list.addLast(1);
-      list.addLast(2);
-      list.addLast(3);
-
       list.addAt(1, 4);
 
-      assert.strictEqual(list.elementAt(0).next.value, 4);
+      assert.strictEqual(list.head.next.value, 4);
     });
 
     it('new node should has link to next node', function() {
-      list.addLast(1);
-      list.addLast(2);
-      list.addLast(3);
+      list.addAt(0, 4);
 
-      list.addAt(1, 4);
-
-      assert.strictEqual(list.elementAt(1).next.value, 2);
+      assert.strictEqual(list.head.next.value, 1);
     });
   });
 
@@ -120,9 +101,6 @@ describe('Linked list', function() {
     });
 
     it('should reduce length by 1', function() {
-      list.addLast(1);
-      list.addLast(1);
-      list.addLast(1);
       const startLength = list.length;
       list.removeLast();
 
@@ -130,28 +108,18 @@ describe('Linked list', function() {
     });
 
     it('should move tail to previous node', function() {
-      list.addLast(1);
-      list.addLast(2);
-      list.addLast(3);
       list.removeLast();
 
       assert.strictEqual(list.tail.value, 2);
     });
 
     it('should return value of removed node', function() {
-      list.addLast(1);
-      list.addLast(2);
-      list.addLast(3);
-
       assert.strictEqual(list.removeLast(), 3);
     });
   });
 
   describe('removeAt', function() {
     it('should reduce length by 1', function() {
-      list.addLast(1);
-      list.addLast(1);
-      list.addLast(1);
       const startLength = list.length;
       list.removeLast();
 
@@ -159,38 +127,24 @@ describe('Linked list', function() {
     });
 
     it('should delete element at given position', function() {
-      list.addLast(1);
-      list.addLast(2);
-      list.addLast(3);
       assert.strictEqual(list.elementAt(1), 2);
       list.removeAt(1);
       assert.strictEqual(list.elementAt(1), 3);
     });
 
     it('pevious node should has link next node after deleted', function() {
-      list.addLast(1);
-      list.addLast(2);
-      list.addLast(3);
-
       list.removeAt(1);
 
-      assert.strictEqual(list.elementAt(0).next.value, 3);
+      assert.strictEqual(list.head.next.value, 3);
     });
 
     it('should return value of removed node', function() {
-      list.addLast(1);
-      list.addLast(2);
-      list.addLast(3);
-
       assert.strictEqual(list.removeAt(1), 2);
     });
   });
 
   describe('removeFirst', function() {
     it('should reduce length by 1', function() {
-      list.addLast(1);
-      list.addLast(1);
-      list.addLast(1);
       const startLength = list.length;
       list.removeFirst();
 
@@ -198,76 +152,52 @@ describe('Linked list', function() {
     });
 
     it('should move head to next node', function() {
-      list.addLast(1);
-      list.addLast(2);
-      list.addLast(3);
       list.removeFirst();
 
       assert.strictEqual(list.head.value, 2);
     });
 
     it('should return value of removed node', function() {
-      list.addLast(1);
-      list.addLast(2);
-      list.addLast(3);
-
       assert.strictEqual(list.removeFirst(), 1);
     });
   });
 
   describe('elementAt', function() {
     it('should return value of element at given index', function() {
-      list.addLast(1);
-      list.addLast(2);
-      list.addLast(3);
-
       assert.strictEqual(list.elementAt(2), 3);
     });
 
     it('should return undefined if given index is bigger than length', function() {
-      list.addLast(1);
-      list.addLast(2);
-      list.addLast(3);
-
       assert.strictEqual(list.elementAt(3), undefined);
     });
   });
 
   describe('indexof', function() {
     it('should return index of found element', function() {
-      list.addLast(1);
-      list.addLast(2);
-      list.addLast(3);
-
       assert.strictEqual(list.indexof(3), 2);
     });
 
     it('should return -1 if given element not found', function() {
-      list.addLast(1);
-      list.addLast(2);
-      list.addLast(3);
-
       assert.strictEqual(list.indexof(10), -1);
     });
   });
 
   describe('isEmpty', function() {
     it('should return true if list is empty', function() {
+      list = new LinkedList();
       assert.ok(list.isEmpty());
     });
 
     it('should return false if list is empty', function() {
-      list.addLast(1);
-
       assert.strictEqual(list.isEmpty(), false);
     });
   });
 
   describe('size', function() {
     it('should return length of list', function() {
-      assert.strictEqual(list.size(), 0);
+      assert.strictEqual(list.size(), 3);
       list.addLast(1);
-      assert.strictEqual(list.size(), 1);
+      assert.strictEqual(list.size(), 4);
     });
   });
 });
