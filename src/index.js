@@ -37,7 +37,7 @@ class LinkedList {
   }
 
   elementAt(index) {
-    if (index > this.legth - 1) {
+    if (index > this.length - 1) {
       return undefined;
     }
 
