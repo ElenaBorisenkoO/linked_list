@@ -174,11 +174,11 @@ describe('Linked list', function() {
 
   describe('indexof', function() {
     it('should return index of found element', function() {
-      assert.strictEqual(list.indexof(3), 2);
+      assert.strictEqual(list.indexOf(3), 2);
     });
 
     it('should return -1 if given element not found', function() {
-      assert.strictEqual(list.indexof(10), -1);
+      assert.strictEqual(list.indexOf(10), -1);
     });
   });
 
