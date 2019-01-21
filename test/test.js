@@ -47,35 +47,86 @@ describe('Linked list', function() {
   });
 
   describe('addFirst', function() {
-    it('shoul adds to end of list', function() {
-      list = new LinkedList();
-      list.add(1);
-      assert.equal(list.length, 1);
+    it('should add element at first position', function() {
+      list.addFirst(1);
+      list.addFirst(2);
+      assert.strictEqual(list.head, 2);
+      list.addFirst(3);
+      assert.strictEqual(list.head, 3);
     });
 
-    it('shoul adds to end of list', function() {
-      list.add(6);
-      assert.equal(list.get(3), 6);
+    it('should increace length by 1', function() {
+      const startLength = list.length;
+      list.addFirst(1);
+      assert.strictEqual(list.length, startLength + 1);
     });
   });
 
   describe('addLast', function() {
+    it('should add element at last position', function() {
+      list.addLast(1);
+      list.addLast(2);
+      assert.strictEqual(list.tail, 2);
+      list.addLast(3);
+      assert.strictEqual(list.tail, 3);
+    });
 
+    it('should increace length by 1', function() {
+      const startLength = list.length;
+      list.addLast(1);
+      assert.strictEqual(list.length, startLength + 1);
+    });
   });
 
   describe('addAt', function() {
+    it('should add element at given position', function() {
+      list.addLast(1);
+      list.addLast(2);
+      assert.strictEqual(list.tail, 2);
+      list.addAt(1, 3);
+      assert.strictEqual(list.elementAt(1), 3);
+    });
 
+    it('should increace length by 1', function() {
+      const startLength = list.length;
+      list.addAt(0, 1);
+      assert.strictEqual(list.length, startLength + 1);
+    });
+
+    it('pevious node should has link to new node', function() {
+      list.addLast(1);
+      list.addLast(2);
+      list.addLast(3);
+
+      list.addAt(1, 4);
+
+      assert.strictEqual(list.elementAt(0).next.value, 4);
+    });
+
+    it('new node should has link to next node', function() {
+      list.addLast(1);
+      list.addLast(2);
+      list.addLast(3);
+
+      list.addAt(1, 4);
+
+      assert.strictEqual(list.elementAt(1).next.value, 2);
+    });
   });
 
   describe('removeLast', function() {
 
   });
 
-  describe('elementAt', function() {
+  describe('removeAt', function() {
 
   });
 
-  describe('removeAt', function() {
+  describe('removeFirst', function() {
+
+  });
+
+  describe('elementAt', function() {
 
   });
 
