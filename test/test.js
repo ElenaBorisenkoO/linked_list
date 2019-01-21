@@ -211,7 +211,21 @@ describe('Linked list', function() {
   });
 
   describe('indexof', function() {
-    
+    it('should return index of found element', function() {
+      list.addLast(1);
+      list.addLast(2);
+      list.addLast(3);
+
+      assert.strictEqual(list.indexof(3), 2);
+    });
+
+    it('should return -1 if given element not found', function() {
+      list.addLast(1);
+      list.addLast(2);
+      list.addLast(3);
+
+      assert.strictEqual(list.indexof(10), -1);
+    });
   });
 
   describe('isEmpty', function() {
