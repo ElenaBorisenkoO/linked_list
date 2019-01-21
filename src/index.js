@@ -26,7 +26,7 @@ class LinkedList {
     let index = -1;
 
     while (currentNode) {
-      index++;
+      index += 1;
 
       if (currentNode.value === value) {
         return index;
@@ -45,7 +45,7 @@ class LinkedList {
     let count = 0;
 
     while (count < index) {
-      count++;
+      count += 1;
       currentNode = currentNode.next;
     }
     return currentNode.value;
@@ -109,7 +109,7 @@ class LinkedList {
   removeAt(index) {
     let currentNode = this.head;
     let currentIndex = 0;
-    let previouceNode = null;
+    let previousNode = null;
 
     if (index < 0) {
       return null;
@@ -120,16 +120,16 @@ class LinkedList {
     } else {
       while (currentIndex < index) {
         currentIndex += 1;
-        previouceNode = currentNode;
+        previousNode = currentNode;
         currentNode = currentNode.next;
       }
 
-      previouceNode.next = currentNode.next;
+      previousNode.next = currentNode.next;
     }
 
     if (currentNode.next === null) {
-      this.tail = previouceNode;
-      previouceNode.next = null;
+      this.tail = previousNode;
+      previousNode.next = null;
     }
 
     this.length -= 1;
@@ -141,6 +141,26 @@ class LinkedList {
 
     this.head = currentNode.next;
 
+
+    this.length -= 1;
+    return currentNode.value;
+  }
+
+  removeLast() {
+    let currentNode = this.head;
+    let previousNode = null;
+
+    if (this.length === 0) {
+      return;
+    }
+
+    while (currentNode.next !== null) {
+      previousNode = currentNode;
+      currentNode = currentNode.next;
+    }
+
+    previousNode.next = null;
+    this.tail = previousNode;
 
     this.length -= 1;
     return currentNode.value;
