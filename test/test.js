@@ -193,7 +193,21 @@ describe('Linked list', function() {
   });
 
   describe('elementAt', function() {
+    it('should return value of element at given index', function() {
+      list.addLast(1);
+      list.addLast(2);
+      list.addLast(3);
 
+      assert.strictEqual(list.elementAt(2), 3);
+    });
+
+    it('should return undefined if given index is bigger than length', function() {
+      list.addLast(1);
+      list.addLast(2);
+      list.addLast(3);
+
+      assert.strictEqual(list.elementAt(3), undefined);
+    });
   });
 
   describe('indexof', function() {
