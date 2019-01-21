@@ -71,5 +71,26 @@ class LinkedList {
 
     this.length += 1;
   }
+
+  removeAt(index) {
+    let currentNode = this.head;
+    let currentIndex = 0;
+    let previouceNode = null;
+
+    if (index < 0) {
+      return null;
+    }
+
+    while (currentIndex < index) {
+      currentIndex += 1;
+      previouceNode = currentNode;
+      currentNode = currentNode.next;
+    }
+
+    previouceNode.next = null;
+
+    this.length -= 1;
+    return currentNode.value;
+  }
 }
 
