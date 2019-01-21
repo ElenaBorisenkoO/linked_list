@@ -82,7 +82,7 @@ describe('Linked list', function() {
     it('should add element at given position', function() {
       list.addLast(1);
       list.addLast(2);
-      assert.strictEqual(list.tail, 2);
+      assert.strictEqual(list.elementAt(1), 2);
       list.addAt(1, 3);
       assert.strictEqual(list.elementAt(1), 3);
     });
@@ -115,15 +115,81 @@ describe('Linked list', function() {
   });
 
   describe('removeLast', function() {
+    it('should work correcr with empty list', function() {
+      assert.doesNotThrow(list.removeLast());
+    });
 
+    it('should reduce length by 1', function() {
+      list.addLast(1);
+      list.addLast(1);
+      list.addLast(1);
+      const startLength = list.length;
+      list.removeLast();
+
+      assert.strictEqual(list.length, startLength - 1);
+    });
+
+    it('should move tail to previous node', function() {
+      list.addLast(1);
+      list.addLast(2);
+      list.addLast(3);
+      list.removeLast();
+
+      assert.strictEqual(list.tail.value, 2);
+    });
   });
 
   describe('removeAt', function() {
+    it('should reduce length by 1', function() {
+      list.addLast(1);
+      list.addLast(1);
+      list.addLast(1);
+      const startLength = list.length;
+      list.removeLast();
+
+      assert.strictEqual(list.length, startLength - 1);
+    });
+
+    it('should delete element at given position', function() {
+      list.addLast(1);
+      list.addLast(2);
+      list.addLast(3);
+      assert.strictEqual(list.elementAt(1), 2);
+      list.removeAt(1);
+      assert.strictEqual(list.elementAt(1), 3);
+    });
+
+    it('pevious node should has link next node after deleted', function() {
+      list.addLast(1);
+      list.addLast(2);
+      list.addLast(3);
+
+      list.removeAt(1);
+
+      assert.strictEqual(list.elementAt(0).next.value, 3);
+    });
 
   });
 
   describe('removeFirst', function() {
+    it('should reduce length by 1', function() {
+      list.addLast(1);
+      list.addLast(1);
+      list.addLast(1);
+      const startLength = list.length;
+      list.removeFirst();
 
+      assert.strictEqual(list.length, startLength - 1);
+    });
+
+    it('should move head to next node', function() {
+      list.addLast(1);
+      list.addLast(2);
+      list.addLast(3);
+      list.removeFirst();
+
+      assert.strictEqual(list.head.value, 2);
+    });
   });
 
   describe('elementAt', function() {
@@ -131,7 +197,7 @@ describe('Linked list', function() {
   });
 
   describe('indexof', function() {
-
+    
   });
 
   describe('isEmpty', function() {
