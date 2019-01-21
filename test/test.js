@@ -239,4 +239,12 @@ describe('Linked list', function() {
       assert.strictEqual(list.isEmpty(), false);
     });
   });
+
+  describe('size', function() {
+    it('should return length of list', function() {
+      assert.strictEqual(list.size(), 0);
+      list.addLast(1);
+      assert.strictEqual(list.size(), 1);
+    });
+  });
 });
