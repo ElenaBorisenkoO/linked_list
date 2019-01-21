@@ -229,6 +229,14 @@ describe('Linked list', function() {
   });
 
   describe('isEmpty', function() {
+    it('should return true if list is empty', function() {
+      assert.ok(list.isEmpty());
+    });
 
+    it('should return false if list is empty', function() {
+      list.addLast(1);
+
+      assert.strictEqual(list.isEmpty(), false);
+    });
   });
 });
