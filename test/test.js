@@ -19,12 +19,30 @@ describe('Linked list', function() {
   });
 
   describe('instance', function() {
-    it('should create empty list with 0 parameters', function() {
-      assert.strictEqual(list.length, 0);
+    it('first element should has link to second', function() {
+      list.addLast(5);
+      list.addLast(1);
+      list.addLast(6);
+
+      const secondValue = list.head.next.value;
+      assert.strictEqual(secondValue, 1);
     });
 
-    it('head and tail hould be null with 0 parameters', function() {
-      assert.strictEqual(list.length, 0);
+    it('last but one node should has next link to tail', function() {
+      list.addLast(5);
+      list.addLast(1);
+      list.addLast(6);
+
+      const secondNode = list.head.next;
+      assert.strictEqual(secondNode.next, list.tail);
+    });
+
+    it('last node should has null next link', function() {
+      list.addLast(5);
+      list.addLast(1);
+      list.addLast(6);
+
+      assert.strictEqual(list.tail.next, null);
     });
   });
 
