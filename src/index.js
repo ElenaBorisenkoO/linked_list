@@ -16,3 +16,4 @@ class Node{
     }
 }
 
+module.exports = LinkedList;
