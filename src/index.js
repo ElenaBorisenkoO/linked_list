@@ -37,6 +37,10 @@ class LinkedList {
   }
 
   elementAt(index) {
+    if (index > this.length - 1) {
+      return undefined;
+    }
+
     let currentNode = this.head;
     let count = 0;
 
