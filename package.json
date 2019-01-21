@@ -1,0 +1,28 @@
+{
+  "name": "linked_list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "lint": "eslint --ext .js src/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ElenaBorisenkoO/linked_list.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ElenaBorisenkoO/linked_list/issues"
+  },
+  "homepage": "https://github.com/ElenaBorisenkoO/linked_list#readme",
+  "dependencies": {
+    "eslint": "^5.12.1",
+    "eslint-config-airbnb-base": "^12.0.2",
+    "eslint-config-prettier": "^2.6.0",
+    "eslint-plugin-import": "^2.7.0",
+    "babel-eslint": "^10.0.1",
+    "mocha": "^4.0.1"
+  }
+}
