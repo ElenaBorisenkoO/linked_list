@@ -110,9 +110,17 @@ class LinkedList {
   }
 
   removeAt(index) {
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+
+      return this;
+    }
+
     let currentNode = this.head;
     let currentIndex = 0;
     let previousNode = null;
+
 
     if (index < 0) {
       return null;
@@ -136,10 +144,19 @@ class LinkedList {
     }
 
     this.length -= 1;
+
     return currentNode.value;
   }
 
   removeFirst() {
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+
+      return this;
+    }
+
+
     const currentNode = this.head;
     this.head = currentNode.next;
     this.length -= 1;
@@ -148,6 +165,14 @@ class LinkedList {
   }
 
   removeLast() {
+    if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+
+      return this;
+    }
+
+
     let currentNode = this.head;
     let previousNode = null;
 
