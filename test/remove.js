@@ -31,6 +31,15 @@ describe('removeLast', function() {
   it('should return value of removed node', function() {
     assert.strictEqual(list.removeLast(), 3);
   });
+
+  it('should set head and tail to null if list became empty', function() {
+    list = new LinkedList();
+    list.addLast(5);
+    list.removeLast();
+
+    assert.strictEqual(list.head, null);
+    assert.strictEqual(list.tail, null);
+  });
 });
 
 describe('removeAt', function() {
@@ -56,6 +65,15 @@ describe('removeAt', function() {
   it('should return value of removed node', function() {
     assert.strictEqual(list.removeAt(1), 2);
   });
+
+  it('should set head and tail to null if list became empty', function() {
+    list = new LinkedList();
+    list.addLast(5);
+    list.removeAt(0);
+
+    assert.strictEqual(list.head, null);
+    assert.strictEqual(list.tail, null);
+  });
 });
 
 describe('removeFirst', function() {
@@ -75,14 +93,13 @@ describe('removeFirst', function() {
   it('should return value of removed node', function() {
     assert.strictEqual(list.removeFirst(), 1);
   });
-});
 
-describe('elementAt', function() {
-  it('should return value of element at given index', function() {
-    assert.strictEqual(list.elementAt(2), 3);
-  });
+  it('should set head and tail to null if list became empty', function() {
+    list = new LinkedList();
+    list.addLast(5);
+    list.removeFirst();
 
-  it('should return undefined if given index is bigger than length', function() {
-    assert.strictEqual(list.elementAt(3), undefined);
+    assert.strictEqual(list.head, null);
+    assert.strictEqual(list.tail, null);
   });
 });

@@ -25,4 +25,19 @@ describe('instance', function() {
   it('last node should has null next link', function() {
     assert.strictEqual(list.tail.next, null);
   });
+
+  it('should work correctly with different type of data', function() {
+    list = new LinkedList();
+    list.addLast('string');
+    list.addLast({ name: 'John' });
+    list.addLast(true);
+    list.addLast(null);
+    list.addLast(undefined);
+
+    assert.strictEqual(list.elementAt(0), 'string');
+    assert.deepStrictEqual(list.elementAt(1), { name: 'John' });
+    assert.ok(list.elementAt(2));
+    assert.strictEqual(list.elementAt(3), null);
+    assert.strictEqual(list.elementAt(4), undefined);
+  });
 });
